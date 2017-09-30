@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.pDemandaController">
+   <children>
+      <Pane fx:id="p_demanda" layoutY="66.0" prefHeight="412.0" prefWidth="1076.0" style="-fx-background-color: #c4cad3;">
+         <children>
+            <TableView id="tb_historico" fx:id="tb_demanda" editable="true" layoutX="14.0" layoutY="13.0" prefHeight="386.0" prefWidth="1048.0">
+               <columns>
+                  <TableColumn fx:id="c_prod1" prefWidth="165.0" text="Producto" />
+                  <TableColumn fx:id="c_ene1" maxWidth="70.0" minWidth="15.0" prefWidth="60.0" resizable="false" text="Enero" />
+                  <TableColumn fx:id="c_feb1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Febrero" />
+                  <TableColumn fx:id="c_mar1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Marzo" />
+                  <TableColumn fx:id="c_abr1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Abril" />
+                  <TableColumn fx:id="c_may1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Mayo" />
+                  <TableColumn fx:id="c_jun1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Junio" />
+                  <TableColumn fx:id="c_jul1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Julio" />
+                  <TableColumn fx:id="c_ag1" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" text="Agosto" />
+                  <TableColumn fx:id="c_sep1" maxWidth="83.0" minWidth="72.0" prefWidth="83.0" text="Septiembre" />
+                  <TableColumn fx:id="c_oct1" maxWidth="80.0" minWidth="69.0" prefWidth="69.0" text="Octubre" />
+                  <TableColumn fx:id="c_nov1" maxWidth="97.0" minWidth="72.0" prefWidth="86.0" text="Noviembre" />
+                  <TableColumn fx:id="c_dic1" maxWidth="118.0" minWidth="70.0" prefWidth="94.0" text="Diciembre" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="hp_options1" layoutX="-13.0" prefHeight="66.0" prefWidth="1142.0" style="-fx-background-color: #3b4d72;">
+         <children>
+            <ImageView fx:id="btn_input" fitHeight="52.0" fitWidth="54.0" layoutX="90.0" layoutY="9.0" onDragDropped="#botonOpciones" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedIn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_record" fitHeight="48.0" fitWidth="44.0" layoutX="27.0" layoutY="13.0" onMouseClicked="#botonOpciones" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Historial.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_shut" fitHeight="52.0" fitWidth="44.0" layoutX="1030.0" layoutY="12.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Apagar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_output" fitHeight="52.0" fitWidth="54.0" layoutX="162.0" layoutY="9.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedOut.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_info" fitHeight="44.0" fitWidth="44.0" layoutX="966.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Info.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_ingre" fitHeight="44.0" fitWidth="37.0" layoutX="527.0" layoutY="18.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/ingrediente.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_recipe" fitHeight="44.0" fitWidth="44.0" layoutX="461.0" layoutY="14.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/receta.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="586.0" layoutY="12.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/mrp1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

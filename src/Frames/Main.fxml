@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+   <children>
+      <Pane fx:id="p_blanco" layoutY="66.0" prefHeight="412.0" prefWidth="1076.0" style="-fx-background-color: #c4cad3;">
+         <children>
+            <TextArea editable="false" layoutX="85.0" layoutY="46.0" prefHeight="304.0" prefWidth="943.0" style="-fx-border-color: #c4cad3; -fx-background-color: #c4cad3;" text="Para ver el registro historico presione (     ).&#10;&#10;Ingrese Inputs (    ) para modificar su plan de demanda.&#10;&#10;Para ver el plan de demanda presione (     ).&#10;" wrapText="true">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+            </TextArea>
+            <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="733.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/HistorialA.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="360.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedInA.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="38.0" fitWidth="44.0" layoutX="745.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedOutA.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <AnchorPane fx:id="hp_options" layoutX="-22.0" prefHeight="66.0" prefWidth="1142.0" style="-fx-background-color: #3b4d72;">
+         <children>
+            <ImageView fx:id="btn_input" fitHeight="52.0" fitWidth="54.0" layoutX="90.0" layoutY="9.0" onDragDropped="#botonOpciones" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedIn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_record" fitHeight="48.0" fitWidth="44.0" layoutX="27.0" layoutY="13.0" onMouseClicked="#botonOpciones" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Historial.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_shut" fitHeight="52.0" fitWidth="44.0" layoutX="1030.0" layoutY="12.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Apagar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_output" fitHeight="52.0" fitWidth="54.0" layoutX="162.0" layoutY="9.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedOut.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_info" fitHeight="44.0" fitWidth="44.0" layoutX="966.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Info.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_recipe" fitHeight="44.0" fitWidth="44.0" layoutX="516.0" layoutY="13.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/receta.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="599.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/mrp1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

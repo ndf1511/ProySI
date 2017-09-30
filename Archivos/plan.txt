@@ -1,0 +1,10 @@
+Chocolate Negro,45.8867,20.7875,27,16,29,14,15,16,34,14,15,17
+Chocolate Blanco,17,25,28,16,30,16,17,18,35,16,16,19
+Chocolate con Leche,14,20,26,15,29,15,14,15,34,13,15,16
+Chocolate Semi Dulce,14,25,28,15,29,14,14,15,33,13,16,16
+Chocolate con Almendras,13,24,29,14,31,13,14,15,37,13,12,16
+Chocolate con Forma,17,25,32,16,35,17,16,17,40,15,15,18
+Pretzel chocolate snack,12,17,25,12,27,12,13,14,25,12,12,15
+Marshmallo cubierto de chocolate,12,18,20,12,15,13,13,14,19,12,14,20
+Salsa de Chocolate,10,11,12,11,13,11,11,12,14,10,12,20
+Chocolate Mini,17,30,35,16,40,16,20,21,50,18,19,25
