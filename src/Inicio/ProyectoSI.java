@@ -41,8 +41,11 @@ public class ProyectoSI extends Application {
         System.out.println("Cambio con Git");
         System.out.println("SUBA EL CAMINO HPTA");
         System.out.println("CupHead");
+
         System.out.println("camino");
-        
+       
+        System.out.println("Nico2");
+
         //make it movable
         //set on mousepress /drag
         
