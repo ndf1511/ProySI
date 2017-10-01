@@ -38,13 +38,6 @@ public class ProyectoSI extends Application {
               
         Parent root = FXMLLoader.load(getClass().getResource("/Frames/Main.fxml")); 
         stage.initStyle(StageStyle.UNDECORATED);
-        System.out.println("Cambio con Git");
-        System.out.println("SUBA EL CAMINO HPTA");
-        System.out.println("CupHead");
-
-        System.out.println("camino");
-       
-        System.out.println("Nico2");
 
         //make it movable
         //set on mousepress /drag
