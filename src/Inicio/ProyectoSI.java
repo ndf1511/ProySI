@@ -40,6 +40,7 @@ public class ProyectoSI extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         System.out.println("Cambio con Git");
         System.out.println("SUBA EL CAMINO HPTA");
+        System.out.println("CupHead");
         
         //make it movable
         //set on mousepress /drag
