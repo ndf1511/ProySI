@@ -53,6 +53,9 @@ public class MainController implements Initializable{
 
     @FXML
     private ImageView btn_output;
+    
+    @FXML
+    private ImageView btn_lista;
 
     @FXML
     private ImageView btn_info;
@@ -127,6 +130,11 @@ public class MainController implements Initializable{
         
              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/MRPI.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Procesos.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
                   
         }else{
              //System.exit(0);
