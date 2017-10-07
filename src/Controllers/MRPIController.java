@@ -37,6 +37,9 @@ public class MRPIController implements Initializable {
 
     @FXML
     private ImageView btn_mrpu;
+    
+     @FXML
+    private ImageView btn_lista;
 
     @FXML
     private ImageView btn_output;
@@ -148,6 +151,11 @@ public class MRPIController implements Initializable {
             
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Inputs.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Procesos.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
                   
         }else{
             
@@ -347,7 +355,6 @@ public class MRPIController implements Initializable {
         }
         catch(Exception e) {
         System.out.println(e);
-        
         }
         
         this.c_prod.setCellValueFactory(new PropertyValueFactory<MRPI, String>("mp"));
