@@ -36,6 +36,10 @@ public class RecetaController implements Initializable {
 
     @FXML
     private ImageView btn_mrpu;
+    
+    @FXML
+    private ImageView btn_lista;
+
 
     @FXML
     private ImageView btn_output;
@@ -126,6 +130,16 @@ public class RecetaController implements Initializable {
         
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/MRPI.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
+            
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Procesos.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_output){
+            
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/pDemanda.fxml"));
+           this.AbrirFXML(fxmlLoader,event); 
             
         }else{
             
