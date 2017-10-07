@@ -38,6 +38,7 @@ public class ProyectoSI extends Application {
               
         Parent root = FXMLLoader.load(getClass().getResource("/Frames/Main.fxml")); 
         stage.initStyle(StageStyle.UNDECORATED);
+        
 
         //make it movable
         //set on mousepress /drag

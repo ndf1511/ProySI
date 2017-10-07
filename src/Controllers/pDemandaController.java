@@ -35,6 +35,14 @@ public class pDemandaController implements Initializable{
 
     @FXML
     private ImageView btn_output;
+    
+    @FXML
+    private ImageView btn_lista;
+    
+    @FXML
+    private ImageView btn_mrpu;
+
+
 
     @FXML
     private TableColumn<Demanda, String> c_nov1;
@@ -98,9 +106,7 @@ public class pDemandaController implements Initializable{
     @FXML
     private ImageView btn_ingre;
     
-    @FXML
-    private ImageView btn_mrpu; 
-    
+      
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -144,6 +150,11 @@ public class pDemandaController implements Initializable{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/MRPI.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
             
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Procesos.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
         }else{
             
         }

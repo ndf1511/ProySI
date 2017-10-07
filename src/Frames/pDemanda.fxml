@@ -57,19 +57,19 @@
                   <Image url="@imagenes/Info.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btn_ingre" fitHeight="44.0" fitWidth="37.0" layoutX="527.0" layoutY="18.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@imagenes/ingrediente.png" />
-               </image>
-            </ImageView>
             <ImageView fx:id="btn_recipe" fitHeight="44.0" fitWidth="44.0" layoutX="461.0" layoutY="14.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagenes/receta.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="586.0" layoutY="12.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="223.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagenes/mrp1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_lista" fitHeight="52.0" fitWidth="44.0" layoutX="527.0" layoutY="13.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/lista.png" />
                </image>
             </ImageView>
          </children>
