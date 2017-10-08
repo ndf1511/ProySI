@@ -72,6 +72,11 @@
                   <Image url="@imagenes/lista.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="btn_pp" fitHeight="52.0" fitWidth="60.0" layoutX="294.0" layoutY="8.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/PlanP.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
