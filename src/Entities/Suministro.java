@@ -19,6 +19,10 @@ public class Suministro {
         this.PrecioHora = PrecioHora;
     }
 
+    public Suministro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     public String getNombre() {
         return Nombre;
