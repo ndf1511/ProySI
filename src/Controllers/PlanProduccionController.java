@@ -316,6 +316,13 @@ public class PlanProduccionController implements Initializable{
         String CostoM = "";
         String CostoE = "";
         float tiempoL=3;
+        float CostoMO = 62;
+        float tiempoMO = 11520;
+        float CostoMOT = 714240;
+        
+        this.tf_costoMO.setText(Float.toString(CostoMOT));
+        this.tf_timeMO.setText(Float.toString(tiempoMO));
+        
         try{
             
         ArrayList<Suministro> hts =ReturnEntitiesConexion.ReturnSum(); 
