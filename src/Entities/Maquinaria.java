@@ -11,12 +11,11 @@ package Entities;
  */
 public class Maquinaria {
     String Maquina;
-    int idMaquinaria, TiempoVida;
+    int TiempoVida;
     float CostoTotal, CostoHora;
 
-    public Maquinaria(String Maquina, int idMaquinaria, int TiempoVida, float CostoTotal, float CostoHora) {
+    public Maquinaria(String Maquina, int TiempoVida, float CostoTotal, float CostoHora) {
         this.Maquina = Maquina;
-        this.idMaquinaria = idMaquinaria;
         this.TiempoVida = TiempoVida;
         this.CostoTotal = CostoTotal;
         this.CostoHora = CostoHora;
@@ -28,14 +27,6 @@ public class Maquinaria {
 
     public void setMaquina(String Maquina) {
         this.Maquina = Maquina;
-    }
-
-    public int getIdMaquinaria() {
-        return idMaquinaria;
-    }
-
-    public void setIdMaquinaria(int idMaquinaria) {
-        this.idMaquinaria = idMaquinaria;
     }
 
     public int getTiempoVida() {
@@ -64,7 +55,7 @@ public class Maquinaria {
 
     @Override
     public String toString() {
-        return "Maquinaria{" + "Maquina=" + Maquina + ", idMaquinaria=" + idMaquinaria + ", TiempoVida=" + TiempoVida + ", CostoTotal=" + CostoTotal + ", CostoHora=" + CostoHora + '}';
+        return "Maquinaria{" + "Maquina=" + Maquina + ", TiempoVida=" + TiempoVida + ", CostoTotal=" + CostoTotal + ", CostoHora=" + CostoHora + '}';
     }
 
     
