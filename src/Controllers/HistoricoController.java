@@ -30,6 +30,10 @@ public class HistoricoController implements Initializable {
 
     @FXML
     private ImageView btn_record;
+    
+    @FXML
+    private ImageView btn_pp;
+    
     @FXML
     private ImageView btn_lista;
 
@@ -146,7 +150,12 @@ public class HistoricoController implements Initializable {
             this.AbrirFXML(fxmlLoader,event); 
         }else if(event.getTarget()==btn_lista){
         
-             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Procesos.fxml"));
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Proceso.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_pp){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/PlanP.fxml"));
              this.AbrirFXML(fxmlLoader,event); 
                   
         }else{
