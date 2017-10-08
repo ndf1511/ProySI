@@ -1,9 +1,16 @@
     
 package Controllers;
 
+import Conexiones.ReturnEntitiesConexion;
+import Entities.Maquinaria;
+import Entities.PlanProduccion;
+import Entities.Suministro;
 import javafx.scene.control.TextField;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -121,6 +129,15 @@ public class PlanProduccionController implements Initializable{
 
     @FXML
     private TextField tf_costoGas1;
+    
+    @FXML
+    private TextField tf_costoGas;
+    
+    @FXML
+    private TextField tf_costoLuz1;
+    
+    @FXML
+    private TextField tf_costoLuz;
 
     @FXML
     private TextField tf_timeMez1;
@@ -136,9 +153,6 @@ public class PlanProduccionController implements Initializable{
 
     @FXML
     private TextField tf_lifeSpawnMez;
-
-    @FXML
-    private TextField tf_costoGas;
 
     @FXML
     private TextField tf_costoMO11;
@@ -190,6 +204,7 @@ public class PlanProduccionController implements Initializable{
 
     @FXML
     private TextField tf_costoMO1;
+    private ObservableList<Suministro> list;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -197,6 +212,7 @@ public class PlanProduccionController implements Initializable{
         this.pane_detMes.toBack();
         this.pane_detDias.toBack();
         this.pane_prods.toBack();
+        
         
     }
 
@@ -256,12 +272,15 @@ public class PlanProduccionController implements Initializable{
     void calculoCostos(ActionEvent event) {
         
         this.pane_detMes.toFront();
+        
+        this.llenarMes();
     }
 
     @FXML
     void calculoTiempos(ActionEvent event) {
         
         this.pane_detDias.toFront();
+        
     }
 
     @FXML
@@ -288,6 +307,63 @@ public class PlanProduccionController implements Initializable{
             
             e.printStackTrace();
         }
+    }
+
+    private void llenarMes() {
+        
+        String CostoL = "";
+        String CostoG = "";
+        String CostoM = "";
+        String CostoE = "";
+        float tiempoL=3;
+        try{
+            
+        ArrayList<Suministro> hts =ReturnEntitiesConexion.ReturnSum(); 
+       
+            for(Suministro s:hts){
+                if(s.getNombre().equals("Gas")){
+                    CostoL=Float.toString(s.getPrecioHora()*tiempoL);
+                    this.tf_costoGas.setText(CostoL);
+                    System.out.println("Hola" + s.getPrecioHora());
+                }else{
+                if(s.getNombre().equals("Electricidad")){
+                    CostoG=Float.toString(s.getPrecioHora()*tiempoL);
+                    this.tf_costoLuz.setText(CostoG);
+                }
+                }               
+            }                               
+        }
+        catch(Exception e) {
+        
+            System.out.println(e);
+        
+        }
+        
+        
+        try{
+            
+        ArrayList<Maquinaria> htss =ReturnEntitiesConexion.ReturnMaqu(); 
+       
+            for(Maquinaria m:htss){
+                if(m.getMaquina().equals("Estufa")){
+                    CostoE=Float.toString(m.getCostoHora()*tiempoL);
+                    this.tf_costoEst.setText(CostoE);
+                    
+                }else{
+                if(m.getMaquina().equals("Mezclador")){
+                    CostoM=Float.toString(m.getCostoHora()*tiempoL);
+                    this.tf_costoMez.setText(CostoM);
+                }
+                }               
+            }                               
+        }
+        catch(Exception e) {
+        
+            System.out.println(e);
+        
+        }
+        
+        
     }
 
 }
