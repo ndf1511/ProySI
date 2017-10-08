@@ -22,6 +22,13 @@ public class PlanProduccion {
         this.TiempoMaquina = TiempoMaquina;
     }
 
+    public PlanProduccion() {
+        
+    }
+
+    
+
+
     public String getMes() {
         return Mes;
     }
