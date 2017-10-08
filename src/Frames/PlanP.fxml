@@ -131,6 +131,16 @@
             <TextField fx:id="tf_lifeSpawnMez" layoutX="397.0" layoutY="296.0" prefHeight="25.0" prefWidth="105.0" />
             <TextField fx:id="tf_timeMO" layoutX="618.0" layoutY="71.0" prefHeight="25.0" prefWidth="103.0" />
             <TextField fx:id="tf_costoMO" layoutX="618.0" layoutY="150.0" prefHeight="25.0" prefWidth="103.0" />
+            <Text layoutX="547.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Precio en COP">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="547.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Tiempo en Minutos">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane fx:id="pane_detDias" layoutY="65.0" prefHeight="347.0" prefWidth="733.0" style="-fx-background-color: #c4cad3;">
@@ -156,12 +166,10 @@
             </Text>
             <Text layoutX="272.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Estufa:" wrappingWidth="92.0" />
             <Text layoutX="272.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Mezcladores:" wrappingWidth="92.0" />
-            <Text layoutX="273.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida vigente Estufas:" wrappingWidth="103.20703125" />
-            <Text layoutX="272.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida vigente Mezcladores:" wrappingWidth="115.20703125" />
             <Text layoutX="30.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Gas:" />
             <Text layoutX="30.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Luz: " />
             <Text layoutX="531.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Mano de Obra:" wrappingWidth="83.0" />
-            <Text layoutX="531.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Mano de Obra:" wrappingWidth="83.0" />
+            <Text layoutX="531.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Mano de Obra:" wrappingWidth="83.0" />
             <TextField fx:id="tf_timeGas1" layoutX="104.0" layoutY="63.0" prefHeight="25.0" prefWidth="135.0" />
             <TextField fx:id="tf_timeLuz1" layoutX="104.0" layoutY="100.0" prefHeight="25.0" prefWidth="135.0" />
             <TextField fx:id="tf_costoGas1" layoutX="104.0" layoutY="150.0" prefHeight="25.0" prefWidth="135.0" />
@@ -170,12 +178,20 @@
             <TextField fx:id="tf_timeMez1" layoutX="367.0" layoutY="108.0" prefHeight="25.0" prefWidth="135.0" />
             <TextField fx:id="tf_costoEst1" layoutX="367.0" layoutY="150.0" prefHeight="25.0" prefWidth="135.0" />
             <TextField fx:id="tf_costoMez1" layoutX="387.0" layoutY="190.0" prefHeight="25.0" prefWidth="115.0" />
-            <TextField fx:id="tf_lifeSpawnEst1" layoutX="378.0" layoutY="243.0" prefHeight="25.0" prefWidth="127.0" />
-            <TextField fx:id="tf_lifeSpawnMez1" layoutX="397.0" layoutY="296.0" prefHeight="25.0" prefWidth="105.0" />
             <TextField fx:id="tf_timeMO1" layoutX="618.0" layoutY="71.0" prefHeight="25.0" prefWidth="103.0" />
-            <TextField fx:id="tf_costoMO1" layoutX="618.0" layoutY="150.0" prefHeight="25.0" prefWidth="103.0" />
-            <Text layoutX="531.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad de Personal: " wrappingWidth="83.0" />
-            <TextField fx:id="tf_costoMO11" layoutX="618.0" layoutY="216.0" prefHeight="25.0" prefWidth="103.0" />
+            <TextField fx:id="tf_costoMO1" layoutX="618.0" layoutY="134.0" prefHeight="25.0" prefWidth="103.0" />
+            <Text layoutX="531.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad de Personal: " wrappingWidth="83.0" />
+            <TextField fx:id="tf_costoMO11" layoutX="618.0" layoutY="182.0" prefHeight="25.0" prefWidth="103.0" />
+            <Text layoutX="271.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Tiempo en Minutos">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="271.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Precio en COP">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>
