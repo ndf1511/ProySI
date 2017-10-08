@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlanProduccionController">
+   <children>
+      <Pane fx:id="pane_detMes" layoutY="67.0" prefHeight="355.0" prefWidth="733.0" style="-fx-background-color: #c4cad3;">
+         <children>
+            <Text layoutX="70.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suministros" wrappingWidth="160.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="28.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Gas: " />
+            <Text layoutX="30.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Luz:" />
+            <Text layoutX="326.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maquinaria">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="272.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Estufa:" />
+            <Text layoutX="273.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Mezcladores:" />
+            <Text layoutX="547.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mano de Obra">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="272.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Estufa:" wrappingWidth="92.0" />
+            <Text layoutX="272.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Mezcladores:" wrappingWidth="92.0" />
+            <Text layoutX="273.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida vigente Estufas:" wrappingWidth="103.20703125" />
+            <Text layoutX="272.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida vigente Mezcladores:" wrappingWidth="115.20703125" />
+            <Text layoutX="30.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Gas:" />
+            <Text layoutX="30.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Luz: " />
+            <Text layoutX="531.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Mano de Obra:" wrappingWidth="83.0" />
+            <Text layoutX="531.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Mano de Obra:" wrappingWidth="83.0" />
+            <TextField fx:id="tf_timeGas" layoutX="104.0" layoutY="63.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_timeLuz" layoutX="104.0" layoutY="100.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoGas" layoutX="104.0" layoutY="150.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoGas" layoutX="104.0" layoutY="190.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_timeEst" layoutX="367.0" layoutY="63.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_timeMez" layoutX="367.0" layoutY="108.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoEst" layoutX="367.0" layoutY="150.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoMez" layoutX="387.0" layoutY="190.0" prefHeight="25.0" prefWidth="115.0" />
+            <TextField fx:id="tf_lifeSpawnEst" layoutX="378.0" layoutY="243.0" prefHeight="25.0" prefWidth="127.0" />
+            <TextField fx:id="tf_lifeSpawnMez" layoutX="397.0" layoutY="296.0" prefHeight="25.0" prefWidth="105.0" />
+            <TextField fx:id="tf_timeMO" layoutX="618.0" layoutY="71.0" prefHeight="25.0" prefWidth="103.0" />
+            <TextField fx:id="tf_costoMO" layoutX="618.0" layoutY="150.0" prefHeight="25.0" prefWidth="103.0" />
+         </children>
+      </Pane>
+      <AnchorPane fx:id="hp_options" layoutX="-12.0" prefHeight="66.0" prefWidth="780.0" style="-fx-background-color: #3b4d72;">
+         <children>
+            <ImageView fx:id="btn_input" fitHeight="52.0" fitWidth="54.0" layoutX="90.0" layoutY="9.0" onDragDropped="#botonOpciones" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedIn.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_record" fitHeight="48.0" fitWidth="44.0" layoutX="27.0" layoutY="13.0" onMouseClicked="#botonOpciones" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Historial.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_shut" fitHeight="44.0" fitWidth="60.0" layoutX="687.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Apagar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_output" fitHeight="52.0" fitWidth="54.0" layoutX="162.0" layoutY="9.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/FeedOut.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_info" fitHeight="44.0" fitWidth="44.0" layoutX="636.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/Info.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_recipe" fitHeight="44.0" fitWidth="44.0" layoutX="447.0" layoutY="13.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/receta.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="231.0" layoutY="12.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/mrp1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_lista" fitHeight="52.0" fitWidth="44.0" layoutX="506.0" layoutY="13.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/lista.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_pp" fitHeight="52.0" fitWidth="60.0" layoutX="291.0" layoutY="9.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/PlanP.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="p_mes" layoutX="-3.0" layoutY="66.0" prefHeight="412.0" prefWidth="738.0" style="-fx-background-color: #c4cad3;">
+         <children>
+            <TableView id="tb_historico" fx:id="tb_historico" editable="true" layoutX="18.0" layoutY="56.0" prefHeight="292.0" prefWidth="685.0">
+              <columns>
+                <TableColumn fx:id="c_prod" prefWidth="165.0" text="Proceso" />
+                <TableColumn fx:id="c_ene" maxWidth="120.0" minWidth="15.0" prefWidth="120.0" resizable="false" text="Tiempo Total" />
+                  <TableColumn fx:id="c_abr" maxWidth="140.0" minWidth="0.0" prefWidth="0.0" text="Abril" />
+                  <TableColumn fx:id="c_may" maxWidth="70.0" minWidth="0.0" prefWidth="0.0" text="Mayo" />
+                  <TableColumn fx:id="c_ag" maxWidth="153.0" minWidth="70.0" prefWidth="142.0" text="Tiempo Mano de Obra" />
+                  <TableColumn fx:id="c_sep" maxWidth="111.0" minWidth="0.0" prefWidth="111.0" text="Maquinaria" />
+                  <TableColumn fx:id="c_oct" maxWidth="175.0" minWidth="0.0" prefWidth="146.0" text="Tiempo Maquinaria" />
+              </columns>
+            </TableView>
+            <ComboBox fx:id="cb_meses" layoutX="288.0" layoutY="24.0" prefWidth="150.0" promptText="Mes" />
+            <Button fx:id="btn_detMes" layoutX="60.0" layoutY="364.0" mnemonicParsing="false" onAction="#calculoCostos" prefHeight="25.0" prefWidth="150.0" text="Detalles Mes" />
+            <Button fx:id="btn_detDias" layoutX="277.0" layoutY="364.0" mnemonicParsing="false" onAction="#calculoTiempos" prefHeight="25.0" prefWidth="150.0" text="Detalles Dias" />
+            <Button fx:id="btn_prods" layoutX="522.0" layoutY="364.0" mnemonicParsing="false" onAction="#calculoProds" prefHeight="25.0" prefWidth="150.0" text="Productos" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane_prods" layoutY="66.0" prefHeight="347.0" prefWidth="733.0" style="-fx-background-color: #c4cad3;">
+         <children>
+            <ComboBox fx:id="cb_productos" layoutX="31.0" layoutY="31.0" prefWidth="150.0" />
+            <Text layoutX="31.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidades Totales Realizadas:" wrappingWidth="186.64453125" />
+            <Text layoutX="31.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Para este Mes:" wrappingWidth="186.64453125" />
+            <Text layoutX="31.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Para inventario:" wrappingWidth="186.64453125" />
+            <TextField fx:id="tx_prodsT" layoutX="218.0" layoutY="74.0" />
+            <TextField fx:id="tx_prodsMes" layoutX="218.0" layoutY="121.0" />
+            <TextField fx:id="tx_prodsInv" layoutX="218.0" layoutY="161.0" />
+            <Text layoutX="31.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventario Total:" wrappingWidth="186.64453125" />
+            <TextField fx:id="tx_prodsInvTotal" layoutX="218.0" layoutY="206.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane_detDias" layoutX="-1.0" layoutY="67.0" prefHeight="355.0" prefWidth="733.0" style="-fx-background-color: #c4cad3;">
+         <children>
+            <Text layoutX="70.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suministros" wrappingWidth="160.13671875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="28.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Gas: " />
+            <Text layoutX="30.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Luz:" />
+            <Text layoutX="324.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maquinaria">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="272.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Estufa:" />
+            <Text layoutX="273.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Mezcladores:" />
+            <Text layoutX="547.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mano de Obra">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="272.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Estufa:" wrappingWidth="92.0" />
+            <Text layoutX="272.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Mezcladores:" wrappingWidth="92.0" />
+            <Text layoutX="273.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida vigente Estufas:" wrappingWidth="103.20703125" />
+            <Text layoutX="272.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo de vida vigente Mezcladores:" wrappingWidth="115.20703125" />
+            <Text layoutX="30.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Gas:" />
+            <Text layoutX="30.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Luz: " />
+            <Text layoutX="531.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Mano de Obra:" wrappingWidth="83.0" />
+            <Text layoutX="531.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Mano de Obra:" wrappingWidth="83.0" />
+            <TextField fx:id="tf_timeGas1" layoutX="104.0" layoutY="63.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_timeLuz1" layoutX="104.0" layoutY="100.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoGas" layoutX="104.0" layoutY="150.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoGas1" layoutX="104.0" layoutY="190.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_timeEst1" layoutX="367.0" layoutY="63.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_timeMez1" layoutX="367.0" layoutY="108.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoEst1" layoutX="367.0" layoutY="150.0" prefHeight="25.0" prefWidth="135.0" />
+            <TextField fx:id="tf_costoMez1" layoutX="387.0" layoutY="190.0" prefHeight="25.0" prefWidth="115.0" />
+            <TextField fx:id="tf_lifeSpawnEst1" layoutX="378.0" layoutY="243.0" prefHeight="25.0" prefWidth="127.0" />
+            <TextField fx:id="tf_lifeSpawnMez1" layoutX="397.0" layoutY="296.0" prefHeight="25.0" prefWidth="105.0" />
+            <TextField fx:id="tf_timeMO1" layoutX="618.0" layoutY="71.0" prefHeight="25.0" prefWidth="103.0" />
+            <TextField fx:id="tf_costoMO1" layoutX="618.0" layoutY="150.0" prefHeight="25.0" prefWidth="103.0" />
+            <Text layoutX="531.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cantidad de Personal: " wrappingWidth="83.0" />
+            <TextField fx:id="tf_costoMO11" layoutX="618.0" layoutY="216.0" prefHeight="25.0" prefWidth="103.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

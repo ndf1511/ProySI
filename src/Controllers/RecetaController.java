@@ -40,6 +40,9 @@ public class RecetaController implements Initializable {
     
     @FXML
     private ImageView btn_lista;
+    
+    @FXML
+    private ImageView btn_pp;
 
 
     @FXML
@@ -138,12 +141,17 @@ public class RecetaController implements Initializable {
             
         }else if(event.getTarget()==btn_lista){
         
-             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Procesos.fxml"));
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Proceso.fxml"));
              this.AbrirFXML(fxmlLoader,event); 
                   
         }else if(event.getTarget()==btn_output){
             
            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/pDemanda.fxml"));
+           this.AbrirFXML(fxmlLoader,event); 
+            
+        }else if(event.getTarget()==btn_pp){
+            
+           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/PlanProduccion.fxml"));
            this.AbrirFXML(fxmlLoader,event); 
             
         }else{

@@ -35,6 +35,9 @@ public class ProcesosController implements Initializable{
 
     @FXML
     private ImageView btn_record;
+    
+    @FXML
+    private ImageView btn_pp;
 
     @FXML
     private TableColumn<Maquinaria, String> c_costoh;
@@ -158,6 +161,11 @@ public class ProcesosController implements Initializable{
            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/pDemanda.fxml"));
            this.AbrirFXML(fxmlLoader,event); 
             
+        }else if(event.getTarget()==btn_pp){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/PlanP.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
         }else{
             
         }
