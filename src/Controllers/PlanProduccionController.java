@@ -204,7 +204,7 @@ public class PlanProduccionController implements Initializable{
 
     @FXML
     private TextField tf_costoMO1;
-    private ObservableList<Suministro> list;
+   
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
