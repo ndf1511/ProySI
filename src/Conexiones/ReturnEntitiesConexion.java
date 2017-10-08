@@ -288,7 +288,7 @@ public class ReturnEntitiesConexion {
             Connection conn = connMySQL.setConeccion(); 
             ArrayList<Proceso> arrayP= new ArrayList(); 
             ps = conn.prepareStatement("SELECT P.IdProceso, P.Nombre,  P.Detalle, P.TiempoTotal, P.TiempoManoObra, M.Maquina, MP.TiempoMaquinaProc, P.CantidadProcesada \n" +
-                                        "FROM Proceso P INNER JOIN MaquinaProceso MP ON P.IdProceso = MP.IdProceso Inner Join Maquinaria M on \n"+
+                                        "FROM Proceso P LEFT OUTER JOIN MaquinaProceso MP ON P.IdProceso = MP.IdProceso LEFT OUTER Join Maquinaria M on \n"+
                                         " M.IdMaquinaria = MP.IdMaquinaria;");
                 ResultSet rs = ps.executeQuery();
                 Proceso P;                
