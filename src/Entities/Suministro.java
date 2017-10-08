@@ -10,23 +10,15 @@ package Entities;
  * @author Yiyisman
  */
 public class Suministro {
-    int idSuministro;
     String Nombre;
     float PrecioHora;
 
-    public Suministro(int idSuministro, String Nombre, float PrecioHora) {
-        this.idSuministro = idSuministro;
+    public Suministro(String Nombre, float PrecioHora) {
+        
         this.Nombre = Nombre;
         this.PrecioHora = PrecioHora;
     }
 
-    public int getIdSuministro() {
-        return idSuministro;
-    }
-
-    public void setIdSuministro(int idSuministro) {
-        this.idSuministro = idSuministro;
-    }
 
     public String getNombre() {
         return Nombre;
@@ -46,7 +38,7 @@ public class Suministro {
 
     @Override
     public String toString() {
-        return "Suministro{" + "idSuministro=" + idSuministro + ", Nombre=" + Nombre + ", PrecioHora=" + PrecioHora + '}';
+        return "Suministro{Nombre=" + Nombre + ", PrecioHora=" + PrecioHora + '}';
     }
 
 

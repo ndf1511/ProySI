@@ -3,6 +3,7 @@ package Controllers;
 import Conexiones.ReturnEntitiesConexion;
 import Entities.Demanda;
 import Entities.Inventario;
+import Entities.Maquinaria;
 import Entities.Proveedor;
 import Entities.Receta;
 import java.net.URL;
@@ -52,7 +53,7 @@ public class RecetaController implements Initializable {
 
     @FXML
     private TableView<Inventario> tb_inventario;
-
+    
     @FXML
     private TableColumn<Proveedor,String> c_provee;
 
@@ -85,18 +86,22 @@ public class RecetaController implements Initializable {
 
     @FXML
     private ImageView btn_shut;
+    
+   
 
     @FXML
     private TableColumn<Receta,String> tc_cant;
     private ObservableList<Receta> list;
     private ObservableList<Proveedor> list2;
     private ObservableList<Inventario> list3;
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.llenarReceta(); 
         this.llenarProveedores(); 
         this.llenarInv(); 
+       
     }
     
     @FXML
@@ -228,9 +233,7 @@ public class RecetaController implements Initializable {
         this.c_cant.setCellValueFactory(new PropertyValueFactory<Inventario, String>("cant"));
         this.tb_inventario.setItems(list3);
     }
-
     
-
    
 
 }
