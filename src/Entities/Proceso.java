@@ -11,6 +11,7 @@ package Entities;
  */
 public class Proceso {
     String nombre, detalle, Maquinaria;
+    int CantidadProcesada, TiempoTotal, TiempoManoObra, idProceso, TiempoMaquinaria;
 
     public String getNombre() {
         return nombre;
@@ -86,7 +87,7 @@ public class Proceso {
         this.idProceso = idProceso;
         this.TiempoMaquinaria = TiempoMaquinaria;
     }
-    int CantidadProcesada, TiempoTotal, TiempoManoObra, idProceso, TiempoMaquinaria;
+    
 
     @Override
     public String toString() {
