@@ -69,6 +69,9 @@ public class ReturnEntitiesConexion {
         }
         
         
+        
+        
+        
         public static String ReturnNombreProd(int id)
                         throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
             
@@ -318,6 +321,28 @@ public class ReturnEntitiesConexion {
                     
                         S= new Suministro(rs.getString(1),rs.getFloat(2));
                         tt.add(S);
+                  }
+                   
+            return tt; 
+        }
+         
+        public static ArrayList<PlanProduccion> ReturnPP(String mes)
+                        throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+            
+            Connection conn = connMySQL.setConeccion(); 
+            
+            ArrayList<PlanProduccion> tt= new ArrayList(); 
+            
+            ps = conn.prepareStatement("Select mes,NombreMaquina,proceso,TiempoTotal,TiempoMo,TimepoMaquina\n" +
+                    "From PlanProduccion Where mes = ?");
+            ps.setString(1,mes);
+            ResultSet rs = ps.executeQuery();
+            PlanProduccion PP;
+                
+            while (rs.next()) {
+                    
+                        PP= new PlanProduccion(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+                        tt.add(PP);
                   }
                    
             return tt; 
