@@ -193,6 +193,7 @@ public class HistoricoController implements Initializable {
             list = FXCollections.observableArrayList(hts);
             
         }
+        
         catch(Exception e) {
         System.out.println(e);
         
