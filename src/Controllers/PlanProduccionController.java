@@ -5,6 +5,11 @@ import Conexiones.ReturnEntitiesConexion;
 import Entities.Maquinaria;
 import Entities.PlanProduccion;
 import Entities.Suministro;
+import Conexiones.UpdateConexion;
+import Entities.PlanProduccion;
+import Entities.Proceso;
+import Entities.Producto;
+import Entities.Receta;
 import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,12 +50,18 @@ public class PlanProduccionController implements Initializable{
 
     @FXML
     private TextField tx_prodsMes;
+    
+    @FXML
+    private TextField tf_cc;
+     
+    @FXML
+    private TextField tf_sr;
 
     @FXML
     private ImageView btn_lista;
 
     @FXML
-    private TableColumn<?, ?> c_abr;
+    private TableColumn<PlanProduccion, String> c_abr;
 
     @FXML
     private TextField tf_timeMO;
@@ -68,7 +79,7 @@ public class PlanProduccionController implements Initializable{
     private ImageView btn_info;
 
     @FXML
-    private TableColumn<?, ?> c_may;
+    private TableColumn<PlanProduccion, String> c_may;
 
     @FXML
     private Pane pane_detDias;
@@ -77,10 +88,10 @@ public class PlanProduccionController implements Initializable{
     private ImageView btn_shut;
 
     @FXML
-    private TableColumn<?, ?> c_ene;
+    private TableColumn<PlanProduccion, String> c_ene;
 
     @FXML
-    private TableColumn<?, ?> c_sep;
+    private TableColumn<PlanProduccion, String> c_sep;
 
     @FXML
     private ImageView btn_output;
@@ -89,7 +100,7 @@ public class PlanProduccionController implements Initializable{
     private TextField tf_timeLuz1;
 
     @FXML
-    private TableColumn<?, ?> c_ag;
+    private TableColumn<PlanProduccion, String> c_ag;
 
     @FXML
     private TextField tx_prodsInv;
@@ -146,11 +157,13 @@ public class PlanProduccionController implements Initializable{
     private Pane p_mes;
 
     @FXML
-    private TableColumn<?, ?> c_oct;
+    private TableColumn<PlanProduccion, String> c_oct;
 
     @FXML
     private TextField tf_timeMO1;
-
+    
+    @FXML
+    private TextField tf_costot;
     @FXML
     private TextField tf_lifeSpawnMez;
 
@@ -173,13 +186,13 @@ public class PlanProduccionController implements Initializable{
     private TextField tf_costoMez;
 
     @FXML
-    private ComboBox<?> cb_meses;
+    private ComboBox<String> cb_meses;
 
     @FXML
     private TextField tx_prodsT;
 
     @FXML
-    private TableColumn<?, ?> c_prod;
+    private TableColumn<PlanProduccion, String> c_prod;
 
     @FXML
     private TextField tx_prodsInvTotal;
@@ -188,7 +201,7 @@ public class PlanProduccionController implements Initializable{
     private TextField tf_timeEst1;
 
     @FXML
-    private TableView<?> tb_historico;
+    private TableView<PlanProduccion> tb_historico;
 
     @FXML
     private TextField tf_costoMez1;
@@ -197,14 +210,19 @@ public class PlanProduccionController implements Initializable{
     private Button btn_prods;
 
     @FXML
-    private ComboBox<?> cb_productos;
+    private ComboBox<Producto> cb_productos;
 
     @FXML
     private TextField tf_timeLuz;
 
     @FXML
     private TextField tf_costoMO1;
-   
+    
+    private ObservableList<PlanProduccion> list;
+    
+    float carbon; 
+    float resina; 
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -212,8 +230,8 @@ public class PlanProduccionController implements Initializable{
         this.pane_detMes.toBack();
         this.pane_detDias.toBack();
         this.pane_prods.toBack();
-        
-        
+        this.llenarComboBox(); 
+            
     }
 
     @FXML
@@ -272,8 +290,8 @@ public class PlanProduccionController implements Initializable{
     void calculoCostos(ActionEvent event) {
         
         this.pane_detMes.toFront();
-        
         this.llenarMes();
+        //this.tf_costoMez.setText("Tu Madre");
     }
 
     @FXML
@@ -292,8 +310,7 @@ public class PlanProduccionController implements Initializable{
     private void AbrirFXML(FXMLLoader fxmlLoader,MouseEvent evento) {
         
          try {
-            
-             
+                       
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UNDECORATED);
@@ -310,35 +327,195 @@ public class PlanProduccionController implements Initializable{
         }
     }
 
+      
+    @FXML
+    void llenarTabla(ActionEvent event) {
+
+            
+            int index=(this.cb_meses.getSelectionModel().getSelectedIndex())+1; 
+                
+            MRPIController t= new MRPIController(); 
+            ArrayList<Float> mp = t.getInfoTabla(index);  
+        
+            resina=mp.get(0);
+            carbon=mp.get(1);
+                  
+            //System.out.println(resina+","+carbon);
+            
+            Float total = resina+carbon; 
+
+            Float pResina=(resina)/total; 
+            Float pCarbon=1 - pResina; 
+
+            System.out.println(pResina+","+pCarbon);
+
+            Float porcionResina= 2400/pResina; 
+            Float porcionCarbon= 2400/pCarbon; 
+
+            int numeroProcesos=(int)(total/2400); 
+
+           /*if(numeroProcesos<350){
+
+                int resta=350-numeroProcesos; 
+                numeroProcesos=numeroProcesos + resta; 
+
+            }*/
+            try{
+
+                ArrayList<Proceso> procs = ReturnEntitiesConexion.ReturnProceso();
+                ArrayList<PlanProduccion>planp = ReturnEntitiesConexion.ReturnPP(this.cb_meses.getSelectionModel().getSelectedItem());
+                
+                if(planp.isEmpty()){
+                    
+                    for(Proceso pr: procs){
+                    
+                    String proc=pr.getNombre(); 
+                    String maq=pr.getMaquinaria();
+                    System.out.println(pr.getTiempoMaquinaria()+","+numeroProcesos); 
+                    int tma = pr.getTiempoMaquinaria()*numeroProcesos;
+                    int ttotal= pr.getTiempoTotal()*numeroProcesos;
+                    int tmo = pr.getTiempoManoObra()*numeroProcesos;
+                    
+                    String mes=this.cb_meses.getSelectionModel().getSelectedItem(); 
+                    UpdateConexion.InsertarPlanProduccion(mes, maq, proc, ttotal, tmo, tma);
+                            
+                    }
+                }
+                
+            }catch(Exception e){
+
+                System.out.println(e);
+            }
+            
+            this.filltable(); 
+        
+        
+    }
+    
+    private void filltable() {
+       System.out.println(this.cb_meses.getSelectionModel().getSelectedItem());
+        
+       try{
+                     
+            ArrayList<PlanProduccion> planp; 
+            String mes=this.cb_meses.getSelectionModel().getSelectedItem(); 
+            System.out.println(mes);
+            planp=ReturnEntitiesConexion.ReturnPP(mes);
+            list = FXCollections.observableArrayList(planp);
+            
+                      
+        }catch(Exception e){
+            
+            System.out.println(e);
+        }
+        
+        this.c_prod.setCellValueFactory(new PropertyValueFactory<PlanProduccion, String>("Proceso"));
+        this.c_ene.setCellValueFactory(new PropertyValueFactory<PlanProduccion, String>("TiempoTotal"));
+        this.c_ag.setCellValueFactory(new PropertyValueFactory<PlanProduccion, String>("TiempoMO"));
+        this.c_sep.setCellValueFactory(new PropertyValueFactory<PlanProduccion, String>("NombreMaquina"));
+        this.c_oct.setCellValueFactory(new PropertyValueFactory<PlanProduccion, String>("TiempoMaquina"));
+        this.tb_historico.setItems(list);
+    } 
+    
+    private void llenarComboBox() {
+        cb_meses.getItems().addAll(
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        );    
+        
+     
+    }
+
+    
     private void llenarMes() {
         
         String CostoL = "";
         String CostoG = "";
         String CostoM = "";
         String CostoE = "";
-        float tiempoL=3;
+         
+        
+        String LifeTimeME;
+        String LifeTimeMM;
+        float tiempoME=0;
+        float tiempoMM=0;
         float tiempoH=192;
         float CostoMO = 62;
-        float tiempoMO = 11520;
-        float CostoMOT = 714240;
+        float tiempoMO=0;
+        float CostoMOT = 3750;
         
-        this.tf_costoMO.setText(Float.toString(CostoMOT));
-        this.tf_timeMO.setText(Float.toString(tiempoMO));
         
-        this.tf_timeGas.setText(Float.toString(tiempoMO));
-        this.tf_timeLuz.setText(Float.toString(tiempoMO));
+        
+        try{
+            
+            ArrayList<PlanProduccion>planp=ReturnEntitiesConexion.ReturnPP(this.cb_meses.getSelectionModel().getSelectedItem());
+            
+            
+              
+           for(PlanProduccion p: planp){
+                
+                System.out.println(tiempoMO+","+p.getTiempoMO());
+                
+                tiempoMO=tiempoMO+p.getTiempoMO(); 
+           }
+            
+           
+           for(PlanProduccion p: planp){
+                
+                if(p.getNombreMaquina().equals("Estufa")){
+                    
+                    tiempoME=tiempoME+p.getTiempoMaquina(); 
+                
+                }else if(p.getNombreMaquina().equals("Mezclador")){
+                    
+                    tiempoMM=tiempoMM+p.getTiempoMaquina(); 
+                    
+                }
+                
+           }
+          
+                       
+            
+        }catch(Exception e){
+            
+        }
+        
+        
+        this.tf_costoMO.setText(Float.toString((CostoMOT*(tiempoMO/60)/9)));
+        this.tf_timeMO.setText(Float.toString(tiempoMO/9));
+        
+        this.tf_timeGas.setText(Float.toString(tiempoME));
+        this.tf_timeLuz.setText(Float.toString(tiempoMM));
+        
+        this.tf_timeEst.setText(Float.toString(tiempoME));
+        this.tf_timeMez.setText(Float.toString(tiempoMM));
+        this.tf_costot.setText("9");
+                
+        float tiempoMEH=tiempoME/60; 
+        float tiempoMMH=tiempoMM/60; 
+        
         try{
             
         ArrayList<Suministro> hts =ReturnEntitiesConexion.ReturnSum(); 
        
             for(Suministro s:hts){
                 if(s.getNombre().equals("Gas")){
-                    CostoL=Float.toString(s.getPrecioHora()*tiempoH*3000*2);
+                    CostoL=Float.toString(s.getPrecioHora()*tiempoMEH*3000*2);
                     this.tf_costoGas.setText(CostoL);
-                    System.out.println("Hola" + s.getPrecioHora());
+                    
                 }else{
                 if(s.getNombre().equals("Electricidad")){
-                    CostoG=Float.toString(s.getPrecioHora()*tiempoH*2);
+                    CostoG=Float.toString(s.getPrecioHora()*tiempoMMH*2);
                     this.tf_costoLuz.setText(CostoG);
                 }
                 }               
@@ -357,12 +534,12 @@ public class PlanProduccionController implements Initializable{
        
             for(Maquinaria m:htss){
                 if(m.getMaquina().equals("Estufa")){
-                    CostoE=Float.toString(m.getCostoHora()*tiempoL);
+                    CostoE=Float.toString(m.getCostoHora()*tiempoMEH);
                     this.tf_costoEst.setText(CostoE);
                     
                 }else{
                 if(m.getMaquina().equals("Mezclador")){
-                    CostoM=Float.toString(m.getCostoHora()*tiempoL);
+                    CostoM=Float.toString(m.getCostoHora()*tiempoMMH);
                     this.tf_costoMez.setText(CostoM);
                 }
                 }               
@@ -374,6 +551,31 @@ public class PlanProduccionController implements Initializable{
         
         }
         
+        try{
+            
+        ArrayList<Maquinaria> htss =ReturnEntitiesConexion.ReturnMaqu(); 
+       
+            for(Maquinaria m:htss){
+                if(m.getMaquina().equals("Estufa")){
+                    LifeTimeME=Float.toString(m.getTiempoVida()-(tiempoME/(525600)));
+                    this.tf_lifeSpawnEst.setText(LifeTimeME);
+                    
+                }else{
+                    if(m.getMaquina().equals("Mezclador")){
+                        LifeTimeMM=Float.toString(m.getTiempoVida()-(tiempoMM/(525600)));
+                        this.tf_lifeSpawnMez.setText(LifeTimeMM);
+                    }
+                }               
+            }                               
+        }
+        catch(Exception e) {
+        
+            System.out.println(e);
+        
+        }
+        
+        
+        
         
     }
     
@@ -383,34 +585,85 @@ public class PlanProduccionController implements Initializable{
         String CostoG = "";
         String CostoM = "";
         String CostoE = "";
+         
         
-        float tiempoL=8;
+        String LifeTimeME;
+        String LifeTimeMM;
+        float tiempoME=0;
+        float tiempoMM=0;
+        float tiempoH=192;
         float CostoMO = 62;
-        float tiempoMO = 480;
-        float CostoMOT = 29760;
-     
-        
-
-        
-        this.tf_timeGas1.setText(Float.toString(tiempoMO));
-        this.tf_timeLuz1.setText(Float.toString(tiempoMO));
-                
-        this.tf_costoMO1.setText(Float.toString(CostoMOT));
-        this.tf_timeMO1.setText(Float.toString(tiempoMO));
-        
+        float tiempoMO=0;
+        float CostoMOT = 3750;
         
         try{
             
+            ArrayList<PlanProduccion>planp=ReturnEntitiesConexion.ReturnPP(this.cb_meses.getSelectionModel().getSelectedItem());
+            
+            
+              
+           for(PlanProduccion p: planp){
+                
+                System.out.println(tiempoMO+","+p.getTiempoMO());
+                
+                tiempoMO=tiempoMO+p.getTiempoMO(); 
+           }
+            
+           
+           for(PlanProduccion p: planp){
+                
+                if(p.getNombreMaquina().equals("Estufa")){
+                    
+                    tiempoME=tiempoME+p.getTiempoMaquina(); 
+                
+                }else if(p.getNombreMaquina().equals("Mezclador")){
+                    
+                    tiempoMM=tiempoMM+p.getTiempoMaquina(); 
+                    
+                }
+                
+           }
+          
+                       
+            
+        }catch(Exception e){
+            
+        }
+        
+        tiempoMO=tiempoMO/24; 
+        tiempoME=tiempoME/24;
+        tiempoMM=tiempoMM/24; 
+        
+                 
+            
+        this.tf_cc.setText(Float.toString(carbon/24));
+        this.tf_sr.setText(Float.toString(resina/24));
+        
+        this.tf_costoMO1.setText(Float.toString((CostoMOT*(tiempoMO/60))/9));
+        this.tf_timeMO1.setText(Float.toString(tiempoMO/9));
+        
+        this.tf_timeGas1.setText(Float.toString(tiempoME));
+        this.tf_timeLuz1.setText(Float.toString(tiempoMM));
+        
+        this.tf_timeEst1.setText(Float.toString(tiempoME));
+        this.tf_timeMez1.setText(Float.toString(tiempoMM));
+        this.tf_costoMO11.setText("9");
+                
+        float tiempoMEH=tiempoME/60; 
+        float tiempoMMH=tiempoMM/60; 
+        
+        try{
             
         ArrayList<Suministro> hts =ReturnEntitiesConexion.ReturnSum(); 
        
             for(Suministro s:hts){
                 if(s.getNombre().equals("Gas")){
-                    CostoL=Float.toString(((s.getPrecioHora()*8)*3000)*2);
+                    CostoL=Float.toString(s.getPrecioHora()*tiempoMEH*3000*2);
                     this.tf_costoGas1.setText(CostoL);
+                    
                 }else{
                 if(s.getNombre().equals("Electricidad")){
-                    CostoG=Float.toString((s.getPrecioHora()*8)*2);
+                    CostoG=Float.toString(s.getPrecioHora()*tiempoMMH*2);
                     this.tf_costoLuz1.setText(CostoG);
                 }
                 }               
@@ -429,12 +682,12 @@ public class PlanProduccionController implements Initializable{
        
             for(Maquinaria m:htss){
                 if(m.getMaquina().equals("Estufa")){
-                    CostoE=Float.toString((m.getCostoHora()*tiempoL)/24);
+                    CostoE=Float.toString(m.getCostoHora()*tiempoMEH);
                     this.tf_costoEst1.setText(CostoE);
                     
                 }else{
                 if(m.getMaquina().equals("Mezclador")){
-                    CostoM=Float.toString((m.getCostoHora()*tiempoL)/24);
+                    CostoM=Float.toString(m.getCostoHora()*tiempoMMH);
                     this.tf_costoMez1.setText(CostoM);
                 }
                 }               
@@ -445,6 +698,8 @@ public class PlanProduccionController implements Initializable{
             System.out.println(e);
         
         }
+        
+            
        
         
         
