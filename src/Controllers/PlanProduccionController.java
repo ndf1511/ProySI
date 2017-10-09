@@ -281,6 +281,7 @@ public class PlanProduccionController implements Initializable{
         
         this.pane_detDias.toFront();
         
+        this.llenarDia();
     }
 
     @FXML
@@ -316,6 +317,7 @@ public class PlanProduccionController implements Initializable{
         String CostoM = "";
         String CostoE = "";
         float tiempoL=3;
+        float tiempoH=192;
         float CostoMO = 62;
         float tiempoMO = 11520;
         float CostoMOT = 714240;
@@ -323,18 +325,20 @@ public class PlanProduccionController implements Initializable{
         this.tf_costoMO.setText(Float.toString(CostoMOT));
         this.tf_timeMO.setText(Float.toString(tiempoMO));
         
+        this.tf_timeGas.setText(Float.toString(tiempoMO));
+        this.tf_timeLuz.setText(Float.toString(tiempoMO));
         try{
             
         ArrayList<Suministro> hts =ReturnEntitiesConexion.ReturnSum(); 
        
             for(Suministro s:hts){
                 if(s.getNombre().equals("Gas")){
-                    CostoL=Float.toString(s.getPrecioHora()*tiempoL);
+                    CostoL=Float.toString(s.getPrecioHora()*tiempoH*3000*2);
                     this.tf_costoGas.setText(CostoL);
                     System.out.println("Hola" + s.getPrecioHora());
                 }else{
                 if(s.getNombre().equals("Electricidad")){
-                    CostoG=Float.toString(s.getPrecioHora()*tiempoL);
+                    CostoG=Float.toString(s.getPrecioHora()*tiempoH*2);
                     this.tf_costoLuz.setText(CostoG);
                 }
                 }               
@@ -369,6 +373,79 @@ public class PlanProduccionController implements Initializable{
             System.out.println(e);
         
         }
+        
+        
+    }
+    
+    private void llenarDia() {
+        
+        String CostoL = "";
+        String CostoG = "";
+        String CostoM = "";
+        String CostoE = "";
+        
+        float tiempoL=8;
+        float CostoMO = 62;
+        float tiempoMO = 480;
+        float CostoMOT = 29760;
+     
+        
+
+        
+        this.tf_timeGas1.setText(Float.toString(tiempoMO));
+        this.tf_timeLuz1.setText(Float.toString(tiempoMO));
+                
+        this.tf_costoMO1.setText(Float.toString(CostoMOT));
+        this.tf_timeMO1.setText(Float.toString(tiempoMO));
+        
+        
+        try{
+            
+            
+        ArrayList<Suministro> hts =ReturnEntitiesConexion.ReturnSum(); 
+       
+            for(Suministro s:hts){
+                if(s.getNombre().equals("Gas")){
+                    CostoL=Float.toString(((s.getPrecioHora()*8)*3000)*2);
+                    this.tf_costoGas1.setText(CostoL);
+                }else{
+                if(s.getNombre().equals("Electricidad")){
+                    CostoG=Float.toString((s.getPrecioHora()*8)*2);
+                    this.tf_costoLuz1.setText(CostoG);
+                }
+                }               
+            }                               
+        }
+        catch(Exception e) {
+        
+            System.out.println(e);
+        
+        }
+        
+        
+        try{
+            
+        ArrayList<Maquinaria> htss =ReturnEntitiesConexion.ReturnMaqu(); 
+       
+            for(Maquinaria m:htss){
+                if(m.getMaquina().equals("Estufa")){
+                    CostoE=Float.toString((m.getCostoHora()*tiempoL)/24);
+                    this.tf_costoEst1.setText(CostoE);
+                    
+                }else{
+                if(m.getMaquina().equals("Mezclador")){
+                    CostoM=Float.toString((m.getCostoHora()*tiempoL)/24);
+                    this.tf_costoMez1.setText(CostoM);
+                }
+                }               
+            }                               
+        }
+        catch(Exception e) {
+        
+            System.out.println(e);
+        
+        }
+       
         
         
     }
