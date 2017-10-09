@@ -187,6 +187,7 @@ public class RecetaController implements Initializable {
         try{
             
             ArrayList<Receta> hts=ReturnEntitiesConexion.ReturnReceta(); 
+            
             list = FXCollections.observableArrayList(hts);
             
             
