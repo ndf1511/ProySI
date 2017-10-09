@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
 /**
@@ -11,23 +6,18 @@ package Entities;
  */
 public class PlanProduccion {
     
-    String Mes,NombreMaquina;
+    String Mes,NombreMaquina,Proceso;
             
-    int TiempoTotal, TiempoMaquina;
+    int TiempoTotal, TiempoMaquina,TiempoMO;
 
-    public PlanProduccion(String Mes, String NombreMaquina, int TiempoTotal, int TiempoMaquina) {
+    public PlanProduccion(String Mes, String NombreMaquina, String Proceso, int TiempoTotal, int TiempoMO,int TiempoMaquina) {
         this.Mes = Mes;
         this.NombreMaquina = NombreMaquina;
+        this.Proceso = Proceso;
         this.TiempoTotal = TiempoTotal;
         this.TiempoMaquina = TiempoMaquina;
+        this.TiempoMO = TiempoMO;
     }
-
-    public PlanProduccion() {
-        
-    }
-
-    
-
 
     public String getMes() {
         return Mes;
@@ -43,6 +33,14 @@ public class PlanProduccion {
 
     public void setNombreMaquina(String NombreMaquina) {
         this.NombreMaquina = NombreMaquina;
+    }
+
+    public String getProceso() {
+        return Proceso;
+    }
+
+    public void setProceso(String Proceso) {
+        this.Proceso = Proceso;
     }
 
     public int getTiempoTotal() {
@@ -61,9 +59,18 @@ public class PlanProduccion {
         this.TiempoMaquina = TiempoMaquina;
     }
 
+    public int getTiempoMO() {
+        return TiempoMO;
+    }
+
+    public void setTiempoMO(int TiempoMO) {
+        this.TiempoMO = TiempoMO;
+    }
+
     @Override
     public String toString() {
-        return "PlanProduccion{" + "Mes=" + Mes + ", NombreMaquina=" + NombreMaquina + ", TiempoTotal=" + TiempoTotal + ", TiempoMaquina=" + TiempoMaquina + '}';
+        return "PlanProduccion{" + "Mes=" + Mes + ", NombreMaquina=" + NombreMaquina + ", Proceso=" + Proceso + ", TiempoTotal=" + TiempoTotal + ", TiempoMaquina=" + TiempoMaquina + ", TiempoMO=" + TiempoMO + '}';
     }
+        
     
 }
