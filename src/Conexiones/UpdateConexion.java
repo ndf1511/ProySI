@@ -30,4 +30,28 @@ public class UpdateConexion {
 		ps.close();
                 connMySQL.setCerrarConeccion();
 	}
+    
+    public static void InsertarPlanProduccion(String mes,String maquina,String proc,int ttotal, int tmo, int tma) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException
+	{
+		// Hago la conexi�n
+		Connection conn = connMySQL.setConeccion();
+// Insertar
+		ps = conn.prepareStatement("INSERT INTO PlanProduccion(mes,NombreMaquina,Proceso,TiempoTotal,TiempoMo,TimepoMaquina)" + 
+		   "VALUES (?, ?, ?, ?, ?, ?)");
+                
+		ps.setString (1, mes);
+                ps.setString(2, maquina);
+		ps.setString (3, proc);
+		ps.setInt(4, ttotal);
+		ps.setInt(5, tmo);
+		ps.setInt (6, tma);
+               
+                contador = ps.executeUpdate();
+		
+// Cierro el resulset, statement, pstatement
+		ps.close();
+                connMySQL.setCerrarConeccion();
+	}
+
+    
 }
