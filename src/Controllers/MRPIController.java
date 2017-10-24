@@ -1,6 +1,7 @@
 package Controllers;
 
 import Conexiones.ReturnEntitiesConexion;
+import Conexiones.UpdateConexion;
 import Entities.Demanda;
 import Entities.Historico;
 import Entities.MRPI;
@@ -37,6 +38,12 @@ public class MRPIController implements Initializable {
 
     @FXML
     private ImageView btn_mrpu;
+    
+     @FXML
+    private ImageView btn_pp;
+    
+     @FXML
+    private ImageView btn_lista;
 
     @FXML
     private ImageView btn_output;
@@ -104,12 +111,39 @@ public class MRPIController implements Initializable {
     ArrayList<MRPI> listaMRP = new ArrayList(); 
     private ObservableList<MRPI> list;
     
+            public static float mSalE;
+            public static float mSalF;
+            public static float mSalM;
+            public static float mSalA;
+            public static float mSalMy;
+            public static float mSalJun;
+            public static float mSalJul;
+            public static float mSalAg;
+            public static float mSalOc;
+            public static float mSalNo;
+            public static float mSalSe;
+            public static float mSalDic;
+            public static float mCarE;
+            public static float mCarF;
+            public static float mCarM;
+            public static float mCarA;
+            public static float mCarMy;
+            public static float mCarJun;
+            public static float mCarJul;
+            public static float mCarAg;
+            public static float mCarOc;
+            public static float mCarNo;
+            public static float mCarSe;
+            public static float mCarDic;
+             
+        
     
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
         this.llenar(); 
+        //this.getInfoTabla(1); 
         
     }    
 
@@ -148,6 +182,16 @@ public class MRPIController implements Initializable {
             
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Inputs.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Proceso.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_pp){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/PlanP.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
                   
         }else{
             
@@ -196,30 +240,9 @@ public class MRPIController implements Initializable {
              float newOct=0;
              float newNov=0;
              float newDic=0;
-             float mSalE=0;
-             float mSalF=0;
-             float mSalM=0;
-             float mSalA=0;
-             float mSalMy=0;
-             float mSalJun=0;
-             float mSalJul=0;
-             float mSalAg=0;
-             float mSalOc=0;
-             float mSalNo=0;
-             float mSalSe=0;
-             float mSalDic=0;
-             float mCarE=0;
-             float mCarF=0;
-             float mCarM=0;
-             float mCarA=0;
-             float mCarMy=0;
-             float mCarJun=0;
-             float mCarJul=0;
-             float mCarAg=0;
-             float mCarOc=0;
-             float mCarNo=0;
-             float mCarSe=0;
-             float mCarDic=0;
+             
+             
+
              float mVelE=0;
              float mVelF=0;
              float mVelM=0;
@@ -232,6 +255,31 @@ public class MRPIController implements Initializable {
              float mVelNo=0;
              float mVelSe=0;
              float mVelDic=0;
+             
+            mSalE=0;
+            mSalF=0;
+            mSalM=0;
+            mSalA=0;
+            mSalMy=0;
+            mSalJun=0;
+            mSalJul=0;
+            mSalAg=0;
+            mSalOc=0;
+            mSalNo=0;
+            mSalSe=0;
+            mSalDic=0;
+            mCarE=0;
+            mCarF=0;
+            mCarM=0;
+            mCarA=0;
+            mCarMy=0;
+            mCarJun=0;
+            mCarJul=0;
+            mCarAg=0;
+            mCarOc=0;
+            mCarNo=0;
+            mCarSe=0;
+            mCarDic=0;
              
              
              for(Receta rs: listaR){
@@ -328,6 +376,7 @@ public class MRPIController implements Initializable {
              MRPI mp = new MRPI("Velas",mVelE,mVelF,mVelM,mVelA,mVelMy,mVelJun,mVelJul,mVelAg,mVelSe,mVelOc,mVelNo,mVelDic);
              listaMRP.add(mp);
              
+             //UpdateConexion.ActualizarExpMat(); 
              this.llenarTabla();           
              
              
@@ -347,7 +396,6 @@ public class MRPIController implements Initializable {
         }
         catch(Exception e) {
         System.out.println(e);
-        
         }
         
         this.c_prod.setCellValueFactory(new PropertyValueFactory<MRPI, String>("mp"));
@@ -365,6 +413,82 @@ public class MRPIController implements Initializable {
         this.c_dic.setCellValueFactory(new PropertyValueFactory<MRPI, String>("dic"));
         this.tb_historico.setItems(list);
         
+    }
+    
+    public ArrayList<Float> getInfoTabla(int columna){
+        
+        ArrayList<Float> datos = new ArrayList(); 
+        //datos.clear(); 
+        
+        switch (columna) {
+            case 1:
+                
+                /*MRPI p= this.tb_historico.getItems().get(1);
+                String resina = this.c_ene.getCellObservableValue(p).getValue();
+                MRPI pp= this.tb_historico.getItems().get(2);
+                String carbon= this.c_ene.getCellObservableValue(p).getValue();*/
+               datos.add(mSalE); 
+               datos.add(mCarE);
+               
+              
+               
+                break;
+            case 2:
+                
+                datos.add(mSalF); 
+                datos.add(mCarF);
+                break;
+            case 3:
+                
+                datos.add(mSalM); 
+                datos.add(mCarM);
+                break;
+            case 4:
+                
+                datos.add(mSalA); 
+                datos.add(mCarA);
+                break;
+            case 5:
+                
+                datos.add(mSalMy); 
+                datos.add(mCarMy);
+                break;
+            case 6:
+                datos.add(mSalJun); 
+                datos.add(mCarJun);
+                break;
+            case 7:
+                datos.add(mSalJul); 
+                datos.add(mCarJul);
+                break;
+            case 8:
+                datos.add(mSalAg); 
+                datos.add(mCarAg);
+                break;
+            case 9:
+                datos.add(mSalSe); 
+                datos.add(mCarSe);
+                break;
+            case 10:
+                datos.add(mSalOc); 
+                datos.add(mCarOc);
+                break;
+            case 11:
+                datos.add(mSalNo); 
+                datos.add(mCarNo);
+                break;
+            case 12:
+                datos.add(mSalDic); 
+                datos.add(mCarDic);
+                break;
+            default:
+                
+                break;
+        }
+            
+        
+        return datos;
+    
     }
 
     

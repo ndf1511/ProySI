@@ -30,6 +30,12 @@ public class HistoricoController implements Initializable {
 
     @FXML
     private ImageView btn_record;
+    
+    @FXML
+    private ImageView btn_pp;
+    
+    @FXML
+    private ImageView btn_lista;
 
     @FXML
     private ImageView btn_output;
@@ -142,6 +148,16 @@ public class HistoricoController implements Initializable {
         
              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/MRPI.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Proceso.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_pp){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/PlanP.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
         }else{
             
         }
@@ -177,6 +193,7 @@ public class HistoricoController implements Initializable {
             list = FXCollections.observableArrayList(hts);
             
         }
+        
         catch(Exception e) {
         System.out.println(e);
         

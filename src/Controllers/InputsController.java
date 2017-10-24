@@ -41,6 +41,8 @@ public class InputsController  implements Initializable{
     @FXML
     private ImageView btn_record;
 
+     @FXML
+    private ImageView btn_lista;
     @FXML
     private ImageView btn_output;
 
@@ -49,11 +51,12 @@ public class InputsController  implements Initializable{
 
     @FXML
     private ImageView btn_input;
+    
+    @FXML
+    private ImageView btn_pp;
 
     @FXML
     private Button btn_cdem;
-
-    
 
     @FXML
     private TextField txt_event;
@@ -148,6 +151,17 @@ public class InputsController  implements Initializable{
                 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/MRPI.fxml"));
             this.AbrirFXML(fxmlLoader,event); 
+                  
+        }else if(event.getTarget()==btn_lista){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/Proceso.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
+                  
+             
+        }else if(event.getTarget()==btn_pp){
+        
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Frames/PlanP.fxml"));
+             this.AbrirFXML(fxmlLoader,event); 
                   
         }else{
             

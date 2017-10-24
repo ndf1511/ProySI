@@ -69,6 +69,9 @@ public class ReturnEntitiesConexion {
         }
         
         
+        
+        
+        
         public static String ReturnNombreProd(int id)
                         throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
             
@@ -261,6 +264,88 @@ public class ReturnEntitiesConexion {
                    
             return tt; 
         }
+         
+         public static ArrayList<Maquinaria> ReturnMaqu()
+                        throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+            
+            Connection conn = connMySQL.setConeccion(); 
+            
+            ArrayList<Maquinaria> tt= new ArrayList(); 
+            
+            ps = conn.prepareStatement("Select Maquina,TimepoVida,CostoTotal,CostoHora from Maquinaria");
+            ResultSet rs = ps.executeQuery();
+            Maquinaria M;
+                
+            while (rs.next()) {
+                    
+                        M= new Maquinaria(rs.getString(1),rs.getInt(2),rs.getFloat(3),rs.getFloat(4));
+                        tt.add(M);
+                  }
+                   
+            return tt; 
+        }
+         
+         public static ArrayList<Proceso> ReturnProceso()
+                        throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+            
+            Connection conn = connMySQL.setConeccion(); 
+            ArrayList<Proceso> arrayP= new ArrayList(); 
+            ps = conn.prepareStatement("SELECT P.IdProceso, P.Nombre,  P.Detalle, P.TiempoTotal, P.TiempoManoObra, M.Maquina, MP.TiempoMaquinaProc, P.CantidadProcesada \n" +
+                                        "FROM Proceso P LEFT OUTER JOIN MaquinaProceso MP ON P.IdProceso = MP.IdProceso LEFT OUTER Join Maquinaria M on \n"+
+                                        " M.IdMaquinaria = MP.IdMaquinaria;");
+                ResultSet rs = ps.executeQuery();
+                Proceso P;                
+            while (rs.next()) {
+                    
+           
+                    P= new Proceso(rs.getString(2),rs.getString(3),rs.getString(6),rs.getInt(8),rs.getInt(4),rs.getInt(5),rs.getInt(1),rs.getInt(7));
+                    arrayP.add(P);
+                    
+                }
+
+               return arrayP; 
+        }
         
+         public static ArrayList<Suministro> ReturnSum()
+                        throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+            
+            Connection conn = connMySQL.setConeccion(); 
+            
+            ArrayList<Suministro> tt= new ArrayList(); 
+            
+            ps = conn.prepareStatement("Select Nombre,PrecioHora from Suministro");
+            ResultSet rs = ps.executeQuery();
+            Suministro S;
+                
+            while (rs.next()) {
+                    
+                        S= new Suministro(rs.getString(1),rs.getFloat(2));
+                        tt.add(S);
+                  }
+                   
+            return tt; 
+        }
+         
+        public static ArrayList<PlanProduccion> ReturnPP(String mes)
+                        throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
+            
+            Connection conn = connMySQL.setConeccion(); 
+            
+            ArrayList<PlanProduccion> tt= new ArrayList(); 
+            
+            ps = conn.prepareStatement("Select mes,NombreMaquina,proceso,TiempoTotal,TiempoMo,TimepoMaquina\n" +
+                    "From PlanProduccion Where mes = ?");
+            ps.setString(1,mes);
+            ResultSet rs = ps.executeQuery();
+            PlanProduccion PP;
+                
+            while (rs.next()) {
+                    
+                        PP= new PlanProduccion(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
+                        tt.add(PP);
+                  }
+                   
+            return tt; 
+        }
         
 }

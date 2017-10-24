@@ -64,9 +64,19 @@
                   <Image url="@imagenes/receta.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="599.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_mrpu" fitHeight="44.0" fitWidth="44.0" layoutX="232.0" layoutY="11.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagenes/mrp1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_lista" fitHeight="52.0" fitWidth="44.0" layoutX="571.0" layoutY="13.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/lista.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_pp" fitHeight="52.0" fitWidth="60.0" layoutX="291.0" layoutY="9.0" onMouseClicked="#botonOpciones" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes/PlanP.png" />
                </image>
             </ImageView>
          </children>
